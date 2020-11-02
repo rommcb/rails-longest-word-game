@@ -1,0 +1,15 @@
+<p>Your word is: <%=@word%></p>
+<p>Letters are: <%=@letters%></p>
+
+ <% word_array = @word.upcase.split("")
+ 
+word_array.each do |letter|
+    matching_letter = @letters.bsearch {|x| x == letter }%>
+    <%=matching_letter%>
+   <% @letters.delete(letter)
+end
+    %> 
+
+
+
+
