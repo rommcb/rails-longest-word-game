@@ -1,15 +1,15 @@
-<p>Your word is: <%=@word%></p>
-<p>Letters are: <%=@letters%></p>
+<h1>Result</h1>
 
- <% word_array = @word.upcase.split("")
- 
-word_array.each do |letter|
-    matching_letter = @letters.bsearch {|x| x == letter }%>
-    <%=matching_letter%>
-   <% @letters.delete(letter)
-end
-    %> 
+<% if @included %>
+  <% if @english_word %>
+    <p><strong>Congratulations!</strong> <%= params[:word] %> is a valid English word!</p>
+  <% else %>
+    <p>Sorry but <strong><%= params[:word] %></strong> does not seem to be a valid English word...</p>
+  <% end %>
+<% else %>
+  <p>Sorry but <strong><%= params[:word] %></strong> can't be built out of <%= @letters %></p>
+<% end %>
 
-
+<%= link_to "Play again", new_path %>
 
 
